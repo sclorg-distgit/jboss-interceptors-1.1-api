@@ -7,7 +7,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.0.2
-Release:          0.9%{namedreltag}.9%{?dist}
+Release:          0.9%{namedreltag}.10%{?dist}
 Summary:          Interceptors 1.1 API
 License:          CDDL or GPLv2 with exceptions
 URL:              http://www.jboss.org
@@ -16,15 +16,15 @@ URL:              http://www.jboss.org
 # cd jboss-interceptors-1.1-api/ && git archive --format=tar --prefix=jboss-interceptors-1.1-api/ 49a90471d8108b5b2a2da6063b5591a9f41ed24a | xz > jboss-interceptors-1.1-api-1.0.2.20120319git49a904.tar.xz
 Source0:          jboss-interceptors-1.1-api-%{namedversion}.tar.xz
 
-BuildRequires:    maven30-jboss-specs-parent
+BuildRequires:    %{?scl_prefix}jboss-specs-parent
 BuildRequires:    %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:    %{?scl_prefix_java_common}maven-local
-BuildRequires:    maven30-maven-compiler-plugin
-BuildRequires:    maven30-maven-install-plugin
-BuildRequires:    maven30-maven-jar-plugin
-BuildRequires:    maven30-maven-javadoc-plugin
-BuildRequires:    maven30-maven-enforcer-plugin
-BuildRequires:    maven30-maven-dependency-plugin
+BuildRequires:    %{?scl_prefix}maven-compiler-plugin
+BuildRequires:    %{?scl_prefix}maven-install-plugin
+BuildRequires:    %{?scl_prefix}maven-jar-plugin
+BuildRequires:    %{?scl_prefix}maven-javadoc-plugin
+BuildRequires:    %{?scl_prefix}maven-enforcer-plugin
+BuildRequires:    %{?scl_prefix}maven-dependency-plugin
 
 BuildArch:        noarch
 
@@ -39,19 +39,19 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n jboss-interceptors-1.1-api
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_file : %{pkg_name}
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -63,6 +63,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0.2-0.9.20120319git49a904.10
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.0.2-0.9.20120319git49a904.9
 - maven33 rebuild
 
