@@ -7,7 +7,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.0.2
-Release:          0.9%{namedreltag}.10%{?dist}
+Release:          0.9%{namedreltag}.11%{?dist}
 Summary:          Interceptors 1.1 API
 License:          CDDL or GPLv2 with exceptions
 URL:              http://www.jboss.org
@@ -18,7 +18,7 @@ Source0:          jboss-interceptors-1.1-api-%{namedversion}.tar.xz
 
 BuildRequires:    %{?scl_prefix}jboss-specs-parent
 BuildRequires:    %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:    %{?scl_prefix_java_common}maven-local
+BuildRequires:    %{?scl_prefix}maven-local
 BuildRequires:    %{?scl_prefix}maven-compiler-plugin
 BuildRequires:    %{?scl_prefix}maven-install-plugin
 BuildRequires:    %{?scl_prefix}maven-jar-plugin
@@ -63,6 +63,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.0.2-0.9.20120319git49a904.11
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0.2-0.9.20120319git49a904.10
 - maven33 rebuild #2
 
